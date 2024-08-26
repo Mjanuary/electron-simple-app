@@ -1,0 +1,53 @@
+{
+  "name": "electron-react-app",
+  "version": "1.0.0",
+  "description": "An Electron app with React and SQLite",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "react-start": "cd src && npm start",
+    "react-build": "cd src && npm run build",
+    "postinstall": "electron-builder install-app-deps",
+    "dist": "npm run react-build && electron-builder"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^32.0.1",
+    "electron-builder": "^24.13.3",
+    "electron-packager": "^17.1.2",
+    "electron-reload": "^2.0.0-alpha.1"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  },
+  "build": {
+    "appId": "com.yourname.electronreactapp",
+    "productName": "Electron React App",
+    "directories": {
+      "buildResources": "assets"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "build/**/*",
+      "src/build/**/*"
+    ],
+    "extraResources": [
+      "assets"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png"
+    }
+  }
+}
